@@ -1,0 +1,2 @@
+> $ ./weather.sh
+°C

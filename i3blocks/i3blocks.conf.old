@@ -1,0 +1,98 @@
+#############################################################
+# ####  #######       #####  #       ####   #### #   #  #####
+#  ##         #       #    # #      #    # #     #  #  #
+#  ##         #       #    # #      #    # #     # #   #
+#  ##     ##### ####  # ###  #      #    # #     ##     ####
+#  ##         #       #    # #      #    # #     # #        #  
+#  ##         #       #    # #      #    # #     #  #       #
+# ####  #######       #####  ######  ####   #### #   # #####
+##############################################################
+
+#My name is Akshay Dwivedi, a linux enthusiast. I like to tinker with technology and try to unsderstand it from the very basic
+#This is my i3-blocks configuration, I have tried my best to create it till here and is looking further ti upgrade it in the
+#near future.
+
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+
+# Global properties
+separator=true
+separator_block_width=15
+
+#[documentation]
+#full_text=Documentation
+#website=https://vivien.github.io/i3blocks
+#command=xdg-open "$website"
+#color=#f12711
+
+#[greetings]
+#color=#f5af19
+#command=echo "Hello, $USER!"
+#interval=once
+
+[disk_usage]
+# command=~/.config/i3blocks/disk_usage/disk_usage.sh
+command=df -h / | awk '/\//{ printf(" 💾 %4s/%s \n", $4, $2) }'
+interval=1
+markup=pango
+format=<span font_weight='bold'>My Config:</span> <span image='~/Downloads/hard-drive-solid.svg' /></span> $output
+color=#a8e201
+
+
+[ram_usage]
+command=free -h | awk 'NR==2{print " " $3"/"$2}'
+interval=1
+color=#d8e201
+
+
+[Charging status]
+command=cat /sys/class/power_supply/BAT0/status
+interval=1
+color=#ff9933
+
+[Battery]
+command=cat /sys/class/power_supply/BAT0/capacity | awk '{print " " $0}'
+interval=1
+color=#ff6833 
+
+[cpu_usage]
+command=mpstat 1 1 | awk '/Average:/ {print" " 100 - $NF "%"}'
+interval=1
+markup=pango
+format=<span font_family='FontAwesome'></span> CPU: $output
+color=#e2a501
+
+
+[volume]
+command=amixer get Master | awk -F '[][]' 'END{ print" " $2 }'
+interval=1
+color=#01e23b
+
+[Screen Brightness]
+[brightness]
+command=light | awk '{print " " $0}'
+interval=1
+markup=pango
+color=#01e2df
+
+[time]
+command=date '+%Y-%m-%d %H:%M:%S' | awk '{print " " $0}'
+# command=date
+interval=1
+color=#f9e000 
+
+[wifi_name]
+command=iwgetid -r | awk '{print " " $0}'
+interval=1
+color=#01abe2
+
+[signal_strength]
+command=~/.config/i3blocks/signal-strength/signal.sh
+interval=1
+color=#db01e2
+
