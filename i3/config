@@ -264,7 +264,7 @@ bindsym $mod+c gaps inner current plus 2;gaps outer current plus 2
 bindsym $mod+z gaps inner current minus 2;gaps outer current minus 2
 
 # Background Wallpapers
-exec_always feh --bg-scale /home/messi/work/minimalistic-wallpaper-collection/images/wheazzy-blue-mountains.jpg
+exec_always feh --bg-scale /home/messi/work/minimalistic-wallpaper-collection/images/arseniy-chebynkin-tokyo-street-night1.jpg
 
 # Run dunst on startup
 exec dunst
@@ -296,4 +296,4 @@ bindsym Ctrl+Shift+Print exec_always --no-startup-id maim --format=png --select 
 # start clipboard manager
 exec klipper
 
-exec_always brightnessctl set 1
+exec brightnessctl set 1

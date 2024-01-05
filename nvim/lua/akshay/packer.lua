@@ -45,5 +45,6 @@ return require('packer').startup(function(use)
     use { 'neoclide/coc.nvim', branch='release' }
     use 'lervag/vimtex'
     use 'xuhdev/vim-latex-live-preview'
+    use 'github/copilot.vim'
 
 end)
