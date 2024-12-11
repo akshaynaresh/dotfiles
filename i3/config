@@ -217,13 +217,13 @@ bindsym $mod+x exec i3lock
 # shortcut keybindings for opening applications
 bindsym $mod+Shift+i    exec firefox
 bindsym $mod+Shift+b    exec brave
-# bindsym $mod+Ctrl+l     exec playerctl next
-# bindsym $mod+Ctrl+k     exec playerctl previous
+bindsym $mod+Ctrl+l     exec playerctl next
+bindsym $mod+Ctrl+k     exec playerctl previous
 bindsym $mod+Ctrl+space exec playerctl play-pause
 bindsym $mod+shift+p    exec spotify
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left  workspace prev
-bindsym $mod+Ctrl+s     exec subl 
+bindsym $mod+Ctrl+s     exec discord 
 bindsym $mod+shift+o    exec code
 bindsym $mod+shift+q    exec pavucontrol
 bindsym $mod+shift+d 	exec dolphin
@@ -231,7 +231,7 @@ bindsym $mod+shift+z 	exec google-chrome-stable
 bindsym $mod+Ctrl+b 	exec blueman-manager 
 bindsym $mod+shift+s exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 bindsym $mod+shift+a exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
-bindsym $mod+shift+f exec qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym $mod+Shift+f exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
 #for enabling touchpad tap to click and natural scrolling
 exec_always xinput set-prop "SYNA7DB5:00 06CB:CD41 Touchpad" "libinput Tapping Enabled" 1
@@ -264,7 +264,7 @@ bindsym $mod+c gaps inner current plus 2;gaps outer current plus 2
 bindsym $mod+z gaps inner current minus 2;gaps outer current minus 2
 
 # Background Wallpapers
-exec_always feh --bg-scale /home/messi/work/minimalistic-wallpaper-collection/images/arseniy-chebynkin-tokyo-street-night1.jpg
+exec_always feh --bg-scale /home/akshay/packages/wallpapers/grub-background.png
 
 # Run dunst on startup
 exec dunst
@@ -273,8 +273,8 @@ exec dunst
 smart_borders on
 default_border pixel
 
-gaps inner 17
-gaps outer 17
+gaps inner 11
+gaps outer 11
 
 # setting up picom
 exec picom --experimental-backends
@@ -294,6 +294,17 @@ bindsym Ctrl+$mod+Print exec_always --no-startup-id maim --format=png --window $
 bindsym Ctrl+Shift+Print exec_always --no-startup-id maim --format=png --select | xclip -selection clipboard -t image/png
 
 # start clipboard manager
-exec klipper
+exec xfce4-clipman
+exec pa-applet
+exec pa-notfy
 
 exec brightnessctl set 1
+
+# Scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+bindsym $mod+plus floating toggle
+
+exec win
+exec dol
+
